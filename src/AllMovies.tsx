@@ -40,7 +40,7 @@ export interface Movie {
 interface State {
     movies: Movie | null;
     title: string;
-    showDetail: boolean;
+    noMovie: boolean;
 }
 
 class AllMovies extends React.Component<{}, State>{
@@ -48,15 +48,23 @@ class AllMovies extends React.Component<{}, State>{
     state:State = {
         movies: null,
         title: '',
-        showDetail: false,
+        noMovie: false,
     };
 
     getMovies = async() => {
         const response = await axios.get(`http://www.omdbapi.com/?t=${this.state.title}=&apikey=40f8d155`);
         console.log(response);
-        this.setState({
-            movies: response.data
-        })
+        console.log(response.data.Error, 'error');
+        if(!response.data.Error){
+
+            this.setState({
+                movies: response.data
+            })
+        } else {
+            this.setState({
+                noMovie: true
+            })
+        }
     }
 
     handleOnChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -66,19 +74,22 @@ class AllMovies extends React.Component<{}, State>{
     }
 
     render(){
-        const { movies } = this.state; 
+        const { movies, noMovie } = this.state; 
         return (
          <React.Fragment>
-            <Header>MOVIEFY</Header>
-            <HeaderII>...find your favorite movie and tv series</HeaderII>
+            <Header>
+                <HeaderI>MOVIEFY</HeaderI>
+                <HeaderII>...find your favorite movie and tv series</HeaderII>
+                </Header>
             <Container>
             <Area>
             <Title><b>Movie Title:</b></Title>
             <Input type="text" onChange={this.handleOnChange}></Input>
             </Area>
-            </Container>
             <Search onClick={this.getMovies}>Search</Search>
+            </Container>
             {movies && <MovieDetail movieData={movies}></MovieDetail>}
+            {noMovie && <NoMovie/>}
         </React.Fragment>
        )
        
@@ -88,10 +99,9 @@ class AllMovies extends React.Component<{}, State>{
 
     const Header = styled.h1`
     text-align: center;
-    font-size: 4.5em;
     font-family: 'Indie Flower', cursive;
     color: #D0CCCC;
-    margin: 0 2px 2px 2px;
+    margin: 0 8px 2px 8px;
     background:
     /* top, transparent black, faked with gradient */ 
     linear-gradient(
@@ -102,13 +112,15 @@ class AllMovies extends React.Component<{}, State>{
         url(http://fc02.deviantart.net/fs71/i/2011/274/6/f/ocean__sky__stars__and_you_by_muddymelly-d4bg1ub.png);
         }
     `;
-    
+    const HeaderI = styled.h1`
+        font-size: 48px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    `;
+
     const HeaderII = styled.h2`
-    text-align: center;
-    font-size: 1.5em;
-    font-family: 'Indie Flower', cursive;
-    color: #555555;
-    margin: 0 2px 2px 2px;
+        font-size: 20px;
+        margin-top: 0px;
     `;
 
 
@@ -155,7 +167,7 @@ class AllMovies extends React.Component<{}, State>{
     background-color: #555555;
     border-radius: 8px;
     margin-top: 5px;
-    // margin-right: 2px;
+    margin-left: 75px;
     border: none;
     color: white;
     padding: 8px 24px;
