@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Poster,Movie } from './AllMovies';
-import star from './star.svg'
+import star from './star.svg';
 
 const MovieDetail = (props: {movieData: Movie}) => {
     const { movieData } = props;

@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AllMovies The component 'AllMovies' should render correctly 1`] = `
+<Fragment>
+  <styled.h1>
+    <styled.h1>
+      MOVIEFY
+    </styled.h1>
+    <styled.h2>
+      ...find your favorite movie and tv series
+    </styled.h2>
+  </styled.h1>
+  <styled.section>
+    <styled.div>
+      <styled.div>
+        <b>
+          Movie Title:
+        </b>
+      </styled.div>
+      <styled.input
+        onChange={[Function]}
+        type="text"
+      />
+    </styled.div>
+    <styled.button
+      onClick={[Function]}
+    >
+      Search
+    </styled.button>
+  </styled.section>
+</Fragment>
+`;
+
+exports[`AllMovies The component 'MovieDetail' should render correctly 1`] = `
+<styled.div>
+  <styled.section>
+    <img
+      src="string"
+    />
+  </styled.section>
+  <styled.div>
+    <styled.div>
+      <b>
+        Jumbo
+      </b>
+       
+      (2000)
+        
+      <img
+        alt="logo"
+        height={40}
+        src="star.svg"
+        width={40}
+      />
+       
+      string
+    </styled.div>
+    <styled.div>
+      string | string | string
+    </styled.div>
+    <styled.p>
+      string
+    </styled.p>
+    <styled.div>
+      <b>
+        Director:
+      </b>
+       
+      string
+    </styled.div>
+    <styled.div>
+      <b>
+        Writer(s):
+      </b>
+       
+      string
+    </styled.div>
+    <styled.div>
+      <b>
+        Actors:
+      </b>
+       
+      string
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

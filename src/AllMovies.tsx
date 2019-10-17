@@ -56,13 +56,14 @@ class AllMovies extends React.Component<{}, State>{
         console.log(response);
         console.log(response.data.Error, 'error');
         if(!response.data.Error){
-
             this.setState({
-                movies: response.data
+                movies: response.data,
+                noMovie: false
             })
         } else {
             this.setState({
-                noMovie: true
+                noMovie: true,
+                movies: null
             })
         }
     }
@@ -89,7 +90,7 @@ class AllMovies extends React.Component<{}, State>{
             <Search onClick={this.getMovies}>Search</Search>
             </Container>
             {movies && <MovieDetail movieData={movies}></MovieDetail>}
-            {noMovie && <NoMovie/>}
+            {!movies && noMovie && <NoMovie/>}
         </React.Fragment>
        )
        
