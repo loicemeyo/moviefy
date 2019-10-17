@@ -6,4 +6,6 @@ A simple React and Typescript app that allows you to serach for favorite movies 
 - Run npm install to install dependencies
 - Run npm start to launch the application
 
+### Testing
+- Run `npm test` to run the tests locally
 
